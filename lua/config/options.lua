@@ -8,11 +8,12 @@ g.loaded_netrwPlugin = 1
 
 ------------------------------------ OPTIONS ----------------------------------
 opt.autowrite = true
---opt.browsedir = 'last'
---opt.encoding = "utf-8"
-opt.clipboard = "unnamedplus"
+opt.autoread = true
+opt.browsedir = 'buffer'
+opt.encoding = 'utf-8'
+opt.clipboard = 'unnamedplus'
 opt.hidden = true --Don't unload buffer when it's abandoned.
-opt.wrap = true
+opt.wrap = false
 opt.swapfile = false
 --opt.undofile = true
 --opt.undodir = os.getenv "HOME" .. "/.cache/nvim/undodir"
@@ -20,7 +21,7 @@ opt.hlsearch = true
 opt.incsearch = true
 opt.ignorecase = true
 opt.smartcase = true
---------------------------------- SPELLING ---------------------------------------
+--------------------------------- SPELLING ------------------------------------
 -- opt.spell = false
 -- opt.spellcapcheck = ""
 -- opt.spellfile = {os.getenv "HOME" .. "/.config/nvim/spell/en.utf-8.add"}
@@ -29,11 +30,11 @@ opt.smartcase = true
 -- opt.spellsuggest = "best"
 --------------------- COLUMNS, LINES AND INDENTING ----------------------------
 opt.number = true
-opt.numberwidth = 2
+opt.numberwidth = 4
 opt.relativenumber = false
+opt.colorcolumn = "80"
 -- opt.columns = 149
 -- opt.lines = 31
-opt.colorcolumn = "80"
 -- opt.linespace = 0
 --opt.cursorcolumn = false
 opt.cursorline = true
@@ -42,49 +43,69 @@ opt.signcolumn = "yes"
 opt.autoindent = true
 opt.breakindent = false
 --opt.breakindentopt = "shift:2"
-opt.expandtab = true --use spaces instead <TAB>
-opt.startofline = true
-opt.smarttab = true --Use shiftwidth instead tabstop when inserting <TAB>.
--- opt.shiftround = false --Round indent to multiple of 'shiftwidth'.
-opt.shiftwidth = 4 --Number of spaces to use for each step of (auto)indent.
-opt.tabstop = 4 --Number of spaces that <TAB> in file uses for indent.
+opt.expandtab = false -- Use spaces instead <TAB>
+--opt.startofline = true -- When moving cursor to another line, position it on the first non-blank character.
+opt.smarttab = false -- Use shiftwidth instead tabstop when inserting <TAB>.
+--opt.shiftround = true -- Round indent to multiple of 'shiftwidth'.
+opt.shiftwidth = 4 -- Number of spaces to use for each step of (auto)indent.
+opt.tabstop = 4 -- Number of spaces that <TAB> in file uses for indent.
 opt.softtabstop = 4 --Number of spaces that <TAB> uses while editing.
---opt.linebreak = true --Wrap long lines at a blank character.
+--opt.linebreak = true -- Wrap long lines at a blank character.
 --opt.showbreak = '↳ ' --String to use at the start of wrapped lines.
 opt.smartindent = true --Samart indenting for C-like languages.
-
 ------------------------------ UI -------------------------------------
-opt.mouse = "a"
-opt.mousehide = true --Hide mouse pointer when typing.
---opt.fillchars = "eob: " -- Character to use for display special items.
---opt.fixendofline = true --Make sure last line in file has <EOL>.
-opt.scrolloff = 4
-opt.sidescrolloff = 4
+opt.mouse = 'a' -- Enable mouse support.
+opt.mousehide = true -- Hide mouse pointer when typing.
+-- opt.fixendofline = true -- Make sure last line in file has <EOL>.
+opt.scrolloff = 8
+opt.sidescrolloff = 8
 opt.termguicolors = true
 opt.list = true
-opt.listchars = "tab:║ ,trail:·" ---
-opt.timeoutlen = 400
+opt.listchars = { tab = '║ ', trail = '•' } --│║-··
+opt.listchars:append({ eol = '↵' })
+
+opt.fillchars = { -- Character to use for display special items.
+    eob = ' ', -- End of buffer
+    stl = ' ', -- Statusline
+    stlnc = ' ', -- Statusline no current
+    wbr = ' ', -- WinBar
+    horiz = '─',--󱁧
+    horizdown = '┬',
+    vert = '│', --󱁨
+    vertleft = '┤',
+    vertright = '├',
+    verthoriz = '┼',
+    horizup = '┴',
+    fold = ' ', -- ·
+    foldclose = '󱁧', --,,▸
+    foldopen = '󱁨', --▾
+    foldsep = '', --⋮│┃
+    diff = '-', --░,⣿,-,─,󱁦
+    msgsep = '‾', -- ─,⋮
+    lastline = ' ',
+}
+opt.timeoutlen = 500
 opt.updatetime = 250
-opt.shortmess = "filnxtToOFWIcC"
+opt.shortmess = "filnxtToOF"
 opt.showmatch = true
---opt.wichwrap:append '<>[]hl'
--- opt.guifont = "VictorMonoNerdFont-Regular"
--- opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20'
+opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20'
+-- opt.wichwrap:append '<>[]hl'
+-- opt.guifont = {'VictorMonoNerdFont-Regular', 'h12'}
 
 ----------------------------- FOLDING -----------------------------------------
--- opt.foldclose = "all"
--- opt.foldcolumn = "1"
--- opt.foldenable = false
--- opt.foldexpr = "nvim_treesitter#foldexpr()"
--- opt.foldignore = "comment"
--- opt.foldlevel = 0
--- opt.foldopen = "all"
--- opt.foldmarker = '{{{,}}}'
--- opt.foldmethod = "indent"
--- opt.foldminlines = 1
--- opt.foldnestmax = 10
---opt.foldtext = "v:lua.fold_text()"
------------------------------ STATUSLINE --------------------------------------
+opt.foldenable = true
+opt.foldcolumn = 'auto:9' --0, auto, auto:1-9, 1-9 resize the width of the fold column
+opt.foldminlines = 0
+opt.foldnestmax = 10
+opt.foldmethod = "indent" -- "manual", "expr", "indent", "syntax", "diff", "marker"
+opt.foldignore = "comment" --only used when foldmethod=indent
+opt.foldlevel = 99 -- 0-99
+opt.foldopen = "all"
+--opt.foldclose = '', --'all'
+-- opt.foldexpr = "nvim_treesitter#foldexpr()" -- Used when foldmethod=expr.
+-- opt.foldmarker = '{{{,}}}' -- when foldmethod=marker
+-- opt.foldtext = "v:lua.fold_text()"
+------------ WINDOWS, STATUSLINE AND TABLINE ----------------------------------
 opt.cmdheight = 1
 opt.cmdwinheight = 7
 opt.laststatus = 3
@@ -93,15 +114,14 @@ opt.showmode = false
 -- opt.ruler = true
 -- opt.rulerformat = "Ln %l - Col %c"
 --opt.statusline = "(%f%)%=%y%=%-(Ln %l/%L | Col %c%V %)"
------------------------------------------------------ TABLINE ------------------------------------------------------------------------------
+--------------------------------- TABLINE -------------------------------------
 -- opt.tabline = "%=(%T%n%y%t%T%)%=(%999Xclose%X)"
 opt.showtabline = 2 -- 0 = never, 1 = only if are at least two tabs, 2 = always
-
------------------------------ WINDOW AND TABS ---------------------------------
+----------------------------- WINDOW ---------------------------------
 opt.equalalways = false
 opt.title = true
 opt.titlelen = 95
-opt.titlestring = "󰕣  DeltaVim" --󰇂󰔶
+opt.titlestring = "󰕣  DeltaVim"
 opt.splitbelow = true
 opt.splitright = true
 opt.splitkeep = "screen"

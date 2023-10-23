@@ -35,7 +35,7 @@ dracula.replace.a.fg = c.dark_purple
 dracula.inactive.a.bg = c.darker_black
 dracula.inactive.a.fg = c.gray
 
-dracula.normal.b.bg = c.white
+dracula.normal.b.bg = c.light_grey
 dracula.normal.b.fg = c.darker_black
 dracula.insert.b.bg = c.white
 dracula.insert.b.fg = c.darker_black
@@ -63,7 +63,6 @@ dracula.inactive.c.fg = c.grey
 
 local separators = {
 	default = '█',
--- LEFT
 	l_arrow = '',
 	l_round = '', --
 	l_flag = '',
@@ -72,7 +71,6 @@ local separators = {
 	l_diagonal = '',
 	l_trap = '',
 	l_fire = '',
--- RIGHT
 	r_arrow = '',
 	r_diagonal = '',
 	r_round = '',--
@@ -164,10 +162,16 @@ function M.setup()
 				right = sep(2, 'space')
 			},
 			disabled_filetypes = {
-				statusline = {},
-				winbar = {},
+				statusline = {
+                    'NvimTree',
+                },
+				winbar = {
+                    'NvimTree',
+                },
 			},
-			ignore_focus = {},
+			ignore_focus = {
+                    'NvimTree',
+            },
 			always_divide_middle = true,
 			globalstatus = true,
 			refresh = {
@@ -178,20 +182,24 @@ function M.setup()
 		},
 		sections = {
 			lualine_a = {
-				{ 'mode', icon = icon() },
+				{'mode',
+                    icon = icon(),
+                    draw_empty = true,
+                },
 			},
 			lualine_b = {
 				{'branch',
-					icon = '',
+					icon = '󰊤 ',
+                    color = { gui = 'bold' },
 				},
 				{'diff',
 					colored = true,
 					diff_color = {
-						added = { fg = c.green },
-						modified = { fg = c.orange },
-						removed = { fg = c.red },
+						added = { fg = '#006414', gui = 'bold' },
+						modified = { fg = '#DF7800', gui = 'bold' },
+						removed = { fg = '#82151d', gui = 'bold' },
 					},
-					symbols = {added = ' ', modified = '柳 ', removed = ' '},
+					symbols = {added = ' ', modified = ' ', removed = ' '},
 				},
 			},
 			lualine_c = {
@@ -201,10 +209,10 @@ function M.setup()
 					path = 1,
 					shorting_target = 40,
 					symbols = {
-						modified = '●',
-						readonly = '',
-						unnamed = '',
-						newfile = '',
+						modified = ' ●',
+						readonly = ' ',
+						unnamed = ' ',
+						newfile = ' ',
 					},
 				},
 			},
@@ -226,16 +234,16 @@ function M.setup()
 			},
 			lualine_b = {
 				{'branch',
-					icon = '',
+					icon = '󰊤 ',
 				},
 				{'diff',
 					colored = true,
 					diff_color = {
-						added = { fg = c.green },
-						modified = { fg = c.orange },
-						removed = { fg = c.red },
+						added = { fg = '#006414', gui = 'bold' },
+						modified = { fg = '#DF7800', gui = 'bold' },
+						removed = { fg = '#82151d', gui = 'bold' },
 					},
-					symbols = {added = ' ', modified = '柳 ', removed = ' '},
+					symbols = {added = ' ', modified = ' ', removed = ' '},
 				},
 			},
 			lualine_c = {
@@ -262,33 +270,42 @@ function M.setup()
 			},
 		},
 		tabline = {
-			lualine_a = {},
+			lualine_a = {
+				{
+					'%T%T',
+					color = { bg = c.black, fg = c.green },
+				},
+			},
 			lualine_b = {},
 			lualine_c = {
-				--%f, %F, %t f=relative path, F=full path, t=tile of file
-				--%!, ! = evaluate expr
-				--%<, <= truncate string to max lenght
-				--%= is a separation between lhs and rhs
-				--%m filenstatus [+] [-]
-				--%r file is readonly [RO]
-				--%y filetype
-				--%q quickfix list Location list
-				--%k keymap name
-				--%n buffer number
 				--%b value of character under cursor
 				--%B as above, in hex
+				--%c column number
+				--%f relative path
+				--%F full path
+				--%k keymap name
 				--%l line number
 				--%L number of lines
-				--%c column number
-				--%V virtual column number
+				--%m filestatus [+] [-]
+				--%n buffer number
 				--%p percentage in file
+				--%q quickfix list Location list
+				--%r file is readonly [RO]
 				--%S showcmd
-				--%{local fn = function() return %t end} return "%t"
-				--%{local fn = function() return %t end %} return "Name of current file"
 				--%T start of tab
+                --%t tile of file
+				--%V virtual column number
 				--%X end of tab, use %999X for a "close" button
+				--%y filetype
 				--%# highlight group, %#HighLightGroup#
 				--%* highlight group 1-9
+				--%! evaluate expr
+				--%< truncate string to max lenght
+                --%- align string to left
+                --%= align string to center
+				--% is a separation between lhs and rhs
+				--% {local fn = function() return %t end} return "%t"
+				--% {local fn = function() return %t end %} return "Name of current file"
 				{
 					'buffers',
 					show_filename_only = true,
@@ -302,20 +319,23 @@ function M.setup()
 						packer = 'LazyNvim',
 						fzf = 'FZF',
 						alpha = 'Alpha',
+                        NvimTree = 'NvimTree',
 					},
 					use_mode_colors = true,
 					buffers_color = {
 						active = { bg = c.dark_purple, fg = c.white },
 						inactive = { bg = c.black, fg = c.grey, gui = 'italic' },
 					},
-					separator = { left = sep(2,'diagonal'), right = sep(1, 'diagonal') },
+					separator = { left = '', right = sep(1, 'diagonal') },
 					padding = { left = 2, right = 2 },
 				},
 				{
-					'%999X%X',
+					'%999X󰅗%X',
+                    color = { bg = c.black, fg = c.red,},
 				},
 			},
-			lualine_x = {},
+			lualine_x = {
+			},
 			lualine_y = {},
 			lualine_z = {
 				{
@@ -361,12 +381,9 @@ function M.setup()
 				lualine_y = {},
 				lualine_z = {},
 		},
-		extensions = {
-			'nvim-tree',
-		},
+		extensions = {},
 	})
 end
-
 
 return M
 

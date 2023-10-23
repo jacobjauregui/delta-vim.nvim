@@ -1,5 +1,5 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
-	lazy = false,
+	event = 'VeryLazy',
 	main = "config.plugins.ibl",
 }

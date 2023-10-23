@@ -45,14 +45,12 @@ function M.setup()
 			},
 			buftypes = {
 				'terminal',
-				--'nofile',
-				--'quickfix',
-				--'prompt',
+				'nofile',
+				'quickfix',
+				'prompt',
 			},
 		},
 	})
 end
-
-
 
 return M
