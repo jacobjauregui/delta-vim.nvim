@@ -341,7 +341,7 @@ function M.setup()
 				{
 					"os.date('%H:%M | %d/%m/%Y')",
 					separator = { left = sep(2, 'round'), right = sep(1, 'round') },
-					color = { fg = c.black, bg = c.purple, gui = 'bold' }
+					color = { fg = '#20a3b4', bg = '#1e1e1e', gui = 'bold' }
 				},
 --[[ 
 				{

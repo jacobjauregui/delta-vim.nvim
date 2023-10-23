@@ -1,12 +1,5 @@
 local tree = require'nvim-tree'
 
-local home = vim.env.HOME
-
-local home_label = function(path)
-	return '%<H.../' .. vim.fn.fnamemodify(path, ':t')
-end
-
-
 local M = {}
 
 function M.setup()
@@ -37,7 +30,7 @@ function M.setup()
 			number = false,
 			relativenumber = false,
 			signcolumn = 'yes',
-			width = 28,
+			width = 30,
 			float = {
 				enable = false,
 				quit_on_focus_loss = true,
@@ -56,7 +49,7 @@ function M.setup()
 			group_empty = false,
 			full_name = false,
 			root_folder_label = ':~:s?$?/..?',
-			indent_width = 2,
+			indent_width = 1,
 			special_files = {
 				'Cargo.toml',
 				'Makefile',
@@ -70,8 +63,8 @@ function M.setup()
 				highlight_bookmarks = 'all',
 				highlight_clipboard = 'name',
 				indent_markers = {
-					enable = true,
-					inline_arrows = true,
+					enable = false,
+					inline_arrows = false,
 					icons = {
 						corner = '└',
 						edge = '│',
@@ -87,11 +80,11 @@ function M.setup()
 							color = true,
 						},
 						folder = {
-							enable = false,
+							enable = true,
 							color = true,
 						},
 					},
-					git_placement = 'before', -- after, before
+					git_placement = 'signcolumn', -- after, before
 					modified_placement = 'after',
 					bookmarks_placement = 'signcolumn',
 					padding = ' ',
@@ -111,7 +104,7 @@ function M.setup()
 						bookmarks = '󰆤',
 						modified = '●',
 						folder = {
-							arrow_closed = '',--󰄠
+							arrow_closed = '󰄠',--
 							arrow_open = '󰄝',
 							default = '',
 							open = '',
