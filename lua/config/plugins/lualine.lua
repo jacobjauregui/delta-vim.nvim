@@ -18,47 +18,46 @@ local lualine = require('lualine')
 -- }
 
 local dracula = require('lualine.themes.dracula')
-local color = require("config.colors.dracula")
-local c = color.base_30
+local c = require("config.gui.colors.color").scheme
 
 dracula.normal.a.bg = c.green
 dracula.normal.a.fg = c.black
 dracula.insert.a.bg = c.red
 dracula.insert.a.fg = c.black
-dracula.visual.a.bg = c.cyan
+dracula.visual.a.bg = c.blue
 dracula.visual.a.fg = c.black
 dracula.command.a.bg = c.orange
 dracula.command.a.fg = c.black
 dracula.replace.a.bg = c.red
-dracula.replace.a.fg = c.dark_purple
-dracula.inactive.a.bg = c.darker_black
-dracula.inactive.a.fg = c.gray
+dracula.replace.a.fg = c.black
+dracula.inactive.a.bg = c.dark_grey
+dracula.inactive.a.fg = c.light_grey
 
-dracula.normal.b.bg = c.light_grey
-dracula.normal.b.fg = c.darker_black
-dracula.insert.b.bg = c.white
-dracula.insert.b.fg = c.darker_black
-dracula.visual.b.bg = c.white
-dracula.visual.b.fg = c.darker_black
-dracula.command.b.bg = c.white
-dracula.command.b.fg = c.darker_black
-dracula.replace.b.bg = c.white
-dracula.replace.b.fg = c.darker_black
-dracula.inactive.b.bg = c.white
-dracula.inactive.b.fg = c.darker_black
+dracula.normal.b.bg = c.dark_grey
+dracula.insert.b.bg = c.dark_grey
+dracula.visual.b.bg = c.dark_grey
+dracula.command.b.bg = c.dark
+dracula.replace.b.bg = c.dark_grey
+dracula.normal.b.fg = c.white
+dracula.insert.b.fg = c.white
+dracula.visual.b.fg = c.white
+dracula.command.b.fg = c.white
+dracula.replace.b.fg = c.white
+dracula.inactive.b.bg = c.dark
+dracula.inactive.b.fg = c.light_grey
 
-dracula.normal.c.bg = c.darker_black
-dracula.normal.c.fg = c.purple
-dracula.insert.c.bg = c.darker_black
-dracula.insert.c.fg = c.purple
-dracula.visual.c.bg = c.darke_black
-dracula.visual.c.fg = c.purple
-dracula.command.c.bg = c.darker_black
-dracula.command.c.fg = c.purple
-dracula.replace.c.bg = c.darker_black
-dracula.replace.c.fg = c.grey
-dracula.inactive.c.bg = c.darker_black
-dracula.inactive.c.fg = c.grey
+dracula.normal.c.bg = c.grey
+dracula.insert.c.bg = c.grey
+dracula.visual.c.bg = c.grey
+dracula.command.c.bg = c.grey
+dracula.replace.c.bg = c.grey
+dracula.command.c.fg = c.white
+dracula.normal.c.fg = c.white
+dracula.insert.c.fg = c.white
+dracula.visual.c.fg = c.white
+dracula.replace.c.fg = c.white
+dracula.inactive.c.bg = c.black
+dracula.inactive.c.fg = c.light_grey
 
 local separators = {
 	default = '█',
@@ -145,8 +144,6 @@ local encoding = function()
 	return encoding_to_upper
 end
 
-
-
 function M.setup()
 	lualine.setup({
 		options = {
@@ -174,29 +171,30 @@ function M.setup()
 			always_divide_middle = true,
 			globalstatus = true,
 			refresh = {
-				statusline = 1000,
-				tabline = 1000,
-				winbar = 1000,
+				statusline = 500,
+				tabline = 500,
+				winbar = 500,
 			},
 		},
 		sections = {
 			lualine_a = {
 				{'mode',
                     icon = icon(),
-                    draw_empty = true,
+                    draw_empty = false,
                 },
 			},
 			lualine_b = {
 				{'branch',
-					icon = '󰊤 ',
+					icon = '',
                     color = { gui = 'bold' },
 				},
 				{'diff',
+					icon = '󰊤',
 					colored = true,
 					diff_color = {
-						added = { fg = '#006414', gui = 'bold' },
-						modified = { fg = '#DF7800', gui = 'bold' },
-						removed = { fg = '#82151d', gui = 'bold' },
+						added = { fg = c.green, gui = 'bold' },
+						modified = { fg = c.yellow, gui = 'bold' },
+						removed = { fg = c.red, gui = 'bold' },
 					},
 					symbols = {added = ' ', modified = ' ', removed = ' '},
 				},
