@@ -22,7 +22,7 @@ function M.setup()
 			files_first = false,
 		},
 		view = {
-			centralize_selection = true,
+			centralize_selection = false, --default true
 			cursorline = true,
 			debounce_delay = 15,
 			side = 'left',
@@ -63,8 +63,8 @@ function M.setup()
 				highlight_bookmarks = 'all',
 				highlight_clipboard = 'name',
 				indent_markers = {
-					enable = false,
-					inline_arrows = false,
+					enable = true,
+					inline_arrows = true,
 					icons = {
 						corner = '└',
 						edge = '│',
@@ -84,10 +84,10 @@ function M.setup()
 							color = true,
 						},
 					},
-					git_placement = 'signcolumn', -- after, before
+					git_placement = 'after', -- after, before
 					modified_placement = 'after',
 					bookmarks_placement = 'signcolumn',
-					padding = ' ',
+					padding = '░',
 					symlink_arrow = ' ➛ ',
 					show = {
 						file = true,
@@ -114,13 +114,13 @@ function M.setup()
 							symlink_open = '',
 						},
 						git = {
-							unstaged = '✗',
-							staged = '✓',
-							unmerged = '',
-							renamed = '➜',
-							untracked = '★',
-							deleted = '',
-							ignored = '◌',
+							unstaged = '󱚙',--󱃟✗
+							staged = '',--󱓴󰇳✓
+							unmerged = '',--󰱪
+							renamed = '',--󱚘󰇴➜ 
+							untracked = '󱒿',--󱚕󰱵★
+							deleted = '',--󱚒󰚛
+							ignored = '',--󱚇󰱭
 						},
 					},
 				},
@@ -146,8 +146,8 @@ function M.setup()
 			timeout = 400,
 		},
 		diagnostics = {
-			enable = false,
-			show_on_dirs = false,
+			enable = true,
+			show_on_dirs = true,
 			show_on_open_dirs = true,
 			debounce_delay = 50,
 			severity = {
@@ -169,9 +169,11 @@ function M.setup()
 		filters = {
 			git_ignored = true,
 			dotfiles = false,
-			git_clean = false,
+			git_clean = true,
 			no_buffer = false,
-			custom = {},
+			custom = {
+				--'.git',
+			},
 			exclude = {},
 		},
 		live_filter = {

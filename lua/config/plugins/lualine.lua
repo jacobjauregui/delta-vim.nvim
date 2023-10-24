@@ -7,16 +7,15 @@ local lualine = require('lualine')
 -- if not ok then
 	-- return
 -- end
---[[ 
-local nvim_tree_shift = {
-	function()
-		return string.rep(' ',
-			vim.api.nvim_win_get_width(require'nvim-tree.view'.get_winnr()) - 2)
-	end,
-	cond = require('nvim-tree.view').is_visible,
---	color = 'NvimTreeNormal'
-}
- ]]
+--
+-- local nvim_tree_shift = {
+-- 	function()
+-- 		return string.rep(' ',
+-- 			vim.api.nvim_win_get_width(require'nvim-tree.view'.get_winnr()) - 2)
+-- 	end,
+-- 	cond = require('nvim-tree.view').is_visible,
+-- --	color = 'NvimTreeNormal'
+-- }
 
 local dracula = require('lualine.themes.dracula')
 local color = require("config.colors.dracula")

@@ -2,17 +2,27 @@ local nvimtree = require("nvim-tree")
 
 local M = {}
 
+M.is_tree_open = false
+
 M.load_tree = function()
 	vim.cmd('NvimTreeOpen')
 	local ft = vim.bo.filetype
-	local message = 'NvimTree loaded in tab ' .. ft .. ' '
 	if ft == 'NvimTree' then
-		message = 'NvimTree already loaded in tab ' .. ft .. ' '
 		vim.cmd('bnext')
+		M.is_tree_open = true
 	end
-	vim.notify = require("notify")
-	vim.notify(message, 'info', {title = 'NVTree', timeout = 2000, icon = ''})
 end
+
+M.close_tree = function()
+	local tabs = vim.api.nvim_list_tabpages()
+	print(tabs)
+	--local buffers = vim.api.nvim_list_buffers()
+	--print(buffers .. M.is_tree_open)
+	--vim.cmd('NvimTreeClose')
+end
+
+M.close_tree()
+
 
 M.load_colorizer = function()
 	vim.cmd('ColorizerAttachToBuffer')

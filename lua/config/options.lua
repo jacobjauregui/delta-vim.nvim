@@ -62,7 +62,7 @@ opt.sidescrolloff = 8
 opt.termguicolors = true
 opt.list = true
 opt.listchars = { tab = '║ ', trail = '•' } --│║-··
-opt.listchars:append({ eol = '↵' })
+--opt.listchars:append({ eol = '↵' })
 
 opt.fillchars = { -- Character to use for display special items.
     eob = ' ', -- End of buffer
