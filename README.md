@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 <!--
 Author: jacobjauregui
 Project: DelatVim
 Version: v1.0.0
 -->
 <div style="width:520px;height:140px">
-    <h1 style="color:violet;font-size:.47rem;padding-left:0%;padding-right:0%">
+    <h1 style="color:violet;font-size:.10rem;padding-left:0%;padding-right:0%">
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -124,9 +123,3 @@ or
 dvim
 ```
 -->
-
-
-=======
-# delta-vim.nvim
-This is a project to customize NeoVim with the help of other plugins and my own settings.
->>>>>>> 93340ff17439386cdc343b40ae1693b6c8d0ccd6
