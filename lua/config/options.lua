@@ -56,36 +56,36 @@ opt.smartindent = true --Samart indenting for C-like languages.
 ------------------------------ UI -------------------------------------
 opt.mouse = 'a' -- Enable mouse support.
 opt.mousehide = true -- Hide mouse pointer when typing.
--- opt.fixendofline = true -- Make sure last line in file has <EOL>.
+opt.fixendofline = true -- Make sure last line in file has <EOL>.
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 opt.termguicolors = true
 opt.list = true
-opt.listchars = { tab = '║ ', trail = '•' } --│║-··
+opt.listchars = { tab = '│ ', trail = ' ' } --│║-··
 --opt.listchars:append({ eol = '↵' })
 
 opt.fillchars = { -- Character to use for display special items.
-    eob = ' ', -- End of buffer
-    stl = ' ', -- Statusline
-    stlnc = ' ', -- Statusline no current
-    wbr = ' ', -- WinBar
-    horiz = '─',--󱁧
-    horizdown = '┬',
-    vert = '│', --󱁨
-    vertleft = '┤',
-    vertright = '├',
-    verthoriz = '┼',
-    horizup = '┴',
-    fold = ' ', -- ·
-    foldclose = '󱁧', --,,▸
-    foldopen = '󱁨', --▾
-    foldsep = '', --⋮│┃
-    diff = '-', --░,⣿,-,─,󱁦
-    msgsep = '‾', -- ─,⋮
-    lastline = ' ',
+	stl = ' ', -- Statusline
+	stlnc = ' ', -- Statusline no current
+	wbr = ' ', -- WinBar
+	horiz = '─',--󱁧
+	horizdown = '┬',
+	vert = '│', --󱁨
+	vertleft = '┤',
+	vertright = '├',
+	verthoriz = '┼',
+	horizup = '┴',
+	fold = ' ', -- ·
+	foldclose = '󱁧', --,▸
+	foldopen = '󱁨', --▾
+	foldsep = '', --⋮┃│
+	diff = '-', --░,⣿,-,─,󱁦
+	msgsep = '‾', -- ─,⋮
+	lastline = '‾',
+	eob = ' ', -- End of buffer
 }
-opt.timeoutlen = 500
-opt.updatetime = 250
+opt.timeoutlen = 100
+opt.updatetime = 150
 opt.shortmess = "filnxtToOF"
 opt.showmatch = true
 opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20'
@@ -94,17 +94,21 @@ opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20'
 
 ----------------------------- FOLDING -----------------------------------------
 opt.foldenable = true
-opt.foldcolumn = 'auto:9' --0, auto, auto:1-9, 1-9 resize the width of the fold column
-opt.foldminlines = 0
-opt.foldnestmax = 10
+opt.foldcolumn = "auto:9" --0, auto, auto:1-9, 1-9 resize the width of the fold column
+opt.foldminlines = 4
+opt.foldnestmax = 9
 opt.foldmethod = "indent" -- "manual", "expr", "indent", "syntax", "diff", "marker"
 opt.foldignore = "comment" --only used when foldmethod=indent
-opt.foldlevel = 99 -- 0-99
-opt.foldopen = "all"
---opt.foldclose = '', --'all'
+opt.foldlevel = 3 -- 0-99
+--opt.foldopen = "all"
+opt.foldclose = "all" --'all'
 -- opt.foldexpr = "nvim_treesitter#foldexpr()" -- Used when foldmethod=expr.
 -- opt.foldmarker = '{{{,}}}' -- when foldmethod=marker
--- opt.foldtext = "v:lua.fold_text()"
+opt.foldtext = "... "
+--"v:lua.fold_text() 
+-- function MyFoldText()
+--    local line = getline(v:foldstart)
+--    local sub = substitute(line, '/\*\|\*\|{{{\d\=', '', 'g')/*|*/|{{{ d = g
 ------------ WINDOWS, STATUSLINE AND TABLINE ----------------------------------
 opt.cmdheight = 1
 opt.cmdwinheight = 7
@@ -116,7 +120,7 @@ opt.showmode = false
 --opt.statusline = "(%f%)%=%y%=%-(Ln %l/%L | Col %c%V %)"
 --------------------------------- TABLINE -------------------------------------
 -- opt.tabline = "%=(%T%n%y%t%T%)%=(%999Xclose%X)"
-opt.showtabline = 2 -- 0 = never, 1 = only if are at least two tabs, 2 = always
+opt.showtabline = 0 -- 0 = never, 1 = only if are at least two tabs, 2 = always
 ----------------------------- WINDOW ---------------------------------
 opt.equalalways = false
 opt.title = true
