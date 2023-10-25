@@ -169,7 +169,7 @@ function M.setup()
 		filters = {
 			git_ignored = true,
 			dotfiles = false,
-			git_clean = true,
+			git_clean = false,
 			no_buffer = false,
 			custom = {
 				--'.git',
