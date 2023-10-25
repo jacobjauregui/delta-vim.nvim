@@ -2,21 +2,7 @@
 
 local M = {}
 
--- local ok, lualine = pcall(require, "lualine")
 local lualine = require('lualine')
--- if not ok then
-	-- return
--- end
---
--- local nvim_tree_shift = {
--- 	function()
--- 		return string.rep(' ',
--- 			vim.api.nvim_win_get_width(require'nvim-tree.view'.get_winnr()) - 2)
--- 	end,
--- 	cond = require('nvim-tree.view').is_visible,
--- --	color = 'NvimTreeNormal'
--- }
-
 local dracula = require('lualine.themes.dracula')
 local c = require("config.gui.colors.color").scheme
 
@@ -30,32 +16,32 @@ dracula.command.a.bg = c.orange
 dracula.command.a.fg = c.black
 dracula.replace.a.bg = c.red
 dracula.replace.a.fg = c.black
-dracula.inactive.a.bg = c.dark_grey
+dracula.inactive.a.bg = c.grey
 dracula.inactive.a.fg = c.light_grey
 
-dracula.normal.b.bg = c.dark_grey
-dracula.insert.b.bg = c.dark_grey
-dracula.visual.b.bg = c.dark_grey
+dracula.normal.b.bg = c.dark
+dracula.insert.b.bg = c.dark
+dracula.visual.b.bg = c.dark
 dracula.command.b.bg = c.dark
-dracula.replace.b.bg = c.dark_grey
+dracula.replace.b.bg = c.dark
 dracula.normal.b.fg = c.white
 dracula.insert.b.fg = c.white
 dracula.visual.b.fg = c.white
 dracula.command.b.fg = c.white
 dracula.replace.b.fg = c.white
-dracula.inactive.b.bg = c.dark
+dracula.inactive.b.bg = c.dark_grey
 dracula.inactive.b.fg = c.light_grey
 
-dracula.normal.c.bg = c.grey
-dracula.insert.c.bg = c.grey
-dracula.visual.c.bg = c.grey
-dracula.command.c.bg = c.grey
-dracula.replace.c.bg = c.grey
-dracula.command.c.fg = c.white
-dracula.normal.c.fg = c.white
-dracula.insert.c.fg = c.white
-dracula.visual.c.fg = c.white
-dracula.replace.c.fg = c.white
+dracula.normal.c.bg = c.light_grey
+dracula.insert.c.bg = c.light_grey
+dracula.visual.c.bg = c.light_grey
+dracula.command.c.bg = c.light_grey
+dracula.replace.c.bg = c.light_grey
+dracula.normal.c.fg = c.black
+dracula.insert.c.fg = c.black
+dracula.visual.c.fg = c.black
+dracula.command.c.fg = c.black
+dracula.replace.c.fg = c.black
 dracula.inactive.c.bg = c.black
 dracula.inactive.c.fg = c.light_grey
 
@@ -270,7 +256,7 @@ function M.setup()
 			lualine_a = {
 				{
 					'%T%T',
-					color = { bg = c.black, fg = c.green },
+					color = { bg = c.dark_grey, fg = c.green },
 				},
 			},
 			lualine_b = {},
@@ -320,18 +306,37 @@ function M.setup()
 					},
 					use_mode_colors = true,
 					buffers_color = {
-						active = { bg = c.dark_purple, fg = c.white },
-						inactive = { bg = c.black, fg = c.grey, gui = 'italic' },
+						active = { bg = c.dark_grey, fg = c.white },
+						inactive = { bg = c.grey, fg = c.black, gui = 'italic' },
 					},
 					separator = { left = '', right = sep(1, 'diagonal') },
 					padding = { left = 2, right = 2 },
 				},
-				{
-					'%999X󰅗%X',
-                    color = { bg = c.black, fg = c.red,},
-				},
 			},
 			lualine_x = {
+				{
+					'tabs',
+					draw_empty = false,
+					separator = { left = '', right = sep(1, 'diagonal') },
+					tab_max_length = 20,
+					--max_length = vim.o.columns / 3,
+					mode = 0,
+					path = 0,
+					use_mode_colors = false,
+					tabs_color = {
+						active = { bg = c.dark_grey, fg = c.white, gui = 'bold' },
+						inactive = { bg = c.grey, fg = c.black, gui = 'italic' },
+					},
+					show_modified_status = false,
+					symbols = {
+						modified = '●',
+					},
+					cond = nil,
+					{
+						'%999X󰅗%X',
+						color = { bg = c.dark_grey, fg = c.red, },
+					},
+				},
 			},
 			lualine_y = {},
 			lualine_z = {
@@ -340,26 +345,6 @@ function M.setup()
 					separator = { left = sep(2, 'round'), right = sep(1, 'round') },
 					color = { fg = '#20a3b4', bg = '#1e1e1e', gui = 'bold' }
 				},
---[[ 
-				{
-					'tabs',
-					draw_empty = true,
-					separator = sep(1, 'arrow'),
-					tab_max_length = 20,
-					max_length = vim.o.columns / 3,
-					mode = 0,
-					path = 0,
-					use_mode_colors = false,
-					tabs_color = {
-						active = { bg = c.darker_black, fg = c.white, gui = 'italic'},
-						inactive = { bg = c.black, fg = c.purple, gui = 'italic' },
-					},
-					show_modified_status = false,
-					symbols = {
-						modified = '●',
-					},
-					cond = nil,
-				}, ]]
 			},
 		},
 		winbar = {
@@ -371,12 +356,12 @@ function M.setup()
 			lualine_z = {},
 		},
 		inactive_winbar = {
-				lualine_a = {},
-				lualine_b = {},
-				lualine_c = {},
-				lualine_x = {},
-				lualine_y = {},
-				lualine_z = {},
+			lualine_a = {},
+			lualine_b = {},
+			lualine_c = {},
+			lualine_x = {},
+			lualine_y = {},
+			lualine_z = {},
 		},
 		extensions = {},
 	})
