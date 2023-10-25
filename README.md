@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--
 Author: jacobjauregui
 Project: DelatVim
@@ -125,3 +126,7 @@ dvim
 -->
 
 
+=======
+# delta-vim.nvim
+This is a project to customize NeoVim with the help of other plugins and my own settings.
+>>>>>>> 93340ff17439386cdc343b40ae1693b6c8d0ccd6
