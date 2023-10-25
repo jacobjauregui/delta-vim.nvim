@@ -4,7 +4,8 @@ Project: DelatVim
 Version: v1.0.0
 -->
 <div style="width:520px;height:140px">
-    <h1 style="color:violet;font-size:.10rem;padding-left:0%;padding-right:0%">
+    <h1 style="color:violet;font-size:.01rem;padding-left:0%;padding-right:0%">
+
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -20,14 +21,21 @@ Version: v1.0.0
     </h1>
 </div>
 
+![screenshot](/Pictures/DeltaVim_screenshot.png "DeltaVim screenshot")
+
 <details>
     <summary style="color:lightgrey; font-size:1.65rem">What about?</summary>
 
-Inspiate by other similar projects for Vim and Neovim, such as NvChad, LunarVim, LazyVim or AstroVim. DeltaVim include some of the most popular [plugins](1#plugins-list "Plugins list") to improve your experience when using Neovim. It's already configurated to run and work easily, but you can customize the default settings or add your ones self if you know some of Lua language.
+Inspiate by other similar projects for Vim and Neovim, such as NvChad, LunarVim,
+LazyVim or AstroVim. DeltaVim include some of the most popular [plugins](1#plugins-list "Plugins list")
+to improve your experience when using Neovim.
 
-![screenshot](/Pictures/DeltaVim_screenshot.png "DeltaVim screenshot")
-**Note!.** *screenshot was taked while usign the follow sources (but this plugin can to work 
-whit different sources e.g  OS: Windows, OS: Arch-Linux Terminal: Wezterm, etc... Except for Neovim, it must be v9.0 or higher. ):*
+It's already configurated to run and work easily, but you can customize the default 
+settings or add your own ones if you know some of Lua language.
+
+**Note!.** *screenshot was taked while usign the follow sources (but this plugin
+can to work whit different sources e.g  OS: Windows, OS: Arch-Linux Terminal: 
+Wezterm, etc... Except for Neovim, it must be v9.0 or higher. ):*
 
 - OS: Kali Linux (Debian)
 
