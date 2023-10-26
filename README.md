@@ -19,10 +19,9 @@ Version: v1.0.0
 ░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝         
 
 
-![screenshot](./delta/screenshots/DeltaVim_screenshot.png "DeltaVim screenshot")
+![screenshot](./lua/delta/screenshots/DeltaVim_screenshot.png "DeltaVim screenshot")
 
-<details>
-    <summary style="color:lightgrey; font-size:1.65rem">What about?</summary>
+## What about?
 
 Inspiate by other similar projects for Vim and Neovim, such as NvChad, LunarVim,
 LazyVim or AstroVim. DeltaVim include some of the most popular [plugins](1#plugins-list "Plugins list")
@@ -31,24 +30,59 @@ to improve your experience when using Neovim.
 It's already configurated to run and work easily, but you can customize the default 
 settings or add your own ones if you know some of Lua language.
 
-**Note!.** *screenshot was taked while usign the follow sources (but this plugin
-can to work whit different sources e.g  OS: Windows, OS: Arch-Linux Terminal: 
-Wezterm, etc... Except for Neovim, it must be v9.0 or higher. ):*
+**Note!.** *screenshot was taked while usign the follow assets (but this plugin
+can to work whit another different e.g  OS: Windows, OS: Arch-Linux Terminal: 
+Wezterm, etc... Except for Neovim, it must be v9.0 or higher. see [pre-requisites](#1pre-requisites "Pre-requisites before to install") ):*
 
-- OS: Kali Linux (Debian)
+* OS: Kali Linux (Debian)
 
-- Terminal :Alacritty
+* Terminal: Alacritty
 
-- Neovim v0.9.4
+* Neovim: v0.9.4, LuaJIT: 2.1.1692716794
 
-- LuaJIT: 2.1.1692716794
-</details>
+* Fonts: NerdFonts
+   - MesloLG 12px (Regular and Regular-Bold)
+   - Victor Mono 12px (Italic and Italic-Bold)
 
 ---
-<details>
-    <summary style="color:lightgrey; font-size:2em">Install</summary>
 
-Using Linux or MacOS
+
+### Pre-Requisites
+
+- [Neovim 0.9+](https://github.com/neovim/neovim/releases "Neovim releases")
+Is very important that nvim version be 0.9 or higher because some plugins may not
+work correctly on lower versions. 
+
+**Note!** If you've alrady installed Neovim with some custom settings, please make sure to
+create a backup of the following directories: ***~/.config/nvim***
+and ***~/.local/share/nvim***. Then delete them.
+
+One way to do the above without deleting your files is:
+
+```
+    mv ~/.config/nvim ~/.nvim_bak
+```
+```
+    mv ~/.local/share/nvim ~/.nvim_bak/
+```
+
+Then, you'll need to replace the old binary (***/bin/nvim***) with the new (***nvim.appimage***)
+```
+    sudo rm /bin/nvim && mv ~/Downloads/nvim.appimage /bin/nvim && chmod u+x /bin/nvim
+```
+
+
+
+- [NerdFonts](https://www.nerdfonts.com/font-downloads "NerdFonts"). It's recommended to
+install and configure the "VictorMono Nerd Font" and "MesloLG Nerd Font" fonts
+on your Terminal to icons displays correctly on the Tabline, Statusline, Directory browser (Nvim-Tree), etc.
+
+
+---
+
+## Install
+
+Using **Linux** or **MacOS**
 ```sh
     git clone https://github.com/jacobjauregui/delta-vim ~/.config/nvim --depth 1 && nvim
 ```
@@ -56,11 +90,14 @@ Using Linux or MacOS
 ```sh
     git clone https://github.com/jacobjauregui/delta-vim $HOME\AppData\Local\nvim --depth 1 && nvim
 ```
-</details>
 
 ---
+...
+
+***Need to fix***
+
 <details>
-    <summary style="color:lightgrey; font-size:2rem">Path tree</summary>
+    <summary style="color:lightgrey; font-size:1.2rem">Path tree</summary>
 Once you've cloned the repo, you'll  automatically have a file structure of your config for neovim like the one below.
 
 <html>
