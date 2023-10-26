@@ -8,7 +8,7 @@ local M = {}
 
 function M.setup()
 	M.highlights = {
--- ___________________________ Syntax _________________________________________
+-- _______________________________ Syntax ______________________________________
 		hl(0, 'Comment', { fg = color.grey }), -- all comments
 		hl(0, 'Constant', { fg = color.white }), -- any constant
 		hl(0, 'Delimiter', { fg = color.yellow }), -- delimiters: . , ; ()
@@ -26,15 +26,15 @@ function M.setup()
 		hl(0, 'Keyword', { fg = color.sky }), -- keywords like local, in, or...
 		hl(0, 'Statement', { fg = color.aqua }), -- any statement
 		hl(0, 'SpecialChar', { fg = color.orange }), -- chars like \n, %t, etc')
-		hl(0, 'Type', { fg = color.olive }), -- any type
-		hl(0, 'Typedef', { fg = color.olive }), -- any type definition')
+		hl(0, 'Type', { fg = color.sky }), -- any type
+		hl(0, 'Typedef', { fg = color.sky }), -- any type definition')
 		hl(0, 'Special', { fg = color.purple }), -- any special symbol
 -- _______________________________ Editor _____________________________________
-		hl(0, 'ColorColumn', { bg = color.red, fg = color.black }),
+		hl(0, 'ColorColumn', { bg = color.dark_grey, fg = color.black }),
 		hl(0, 'Cursor'      ,{ fg=color.white, bg=color.black }),
 		-- hl(0, 'CursorColumn', { bg = color.dark }),
 		hl(0, 'CursorLine', { bg = color.dark}),
-		hl(0, 'CursorLineNr', { fg = color.blue, bg = color.black }),
+		hl(0, 'CursorLineNr', { fg = color.white, bg = color.black }),
 		hl(0, 'CurSearch'   ,{ fg=color.dark, bg=color.yellow }),
 		hl(0, 'Directory'   ,{ fg=color.blue }),
 		hl(0, 'DiffAdd', { fg = color.green, bg = color.black}),
@@ -44,13 +44,13 @@ function M.setup()
 		hl(0, 'EndOfBuffer', { fg = color.dark }),
 		hl(0, 'FoldColumn', { fg = color.white }),
 		hl(0, 'Folded', { fg = color.grey, bg = color.black }),
-		hl(0, 'IncSearch'   ,{ fg=color.black, bg=color.blue }),
+		hl(0, 'IncSearch'   ,{ fg=color.black, bg=color.grey }),
 		hl(0, 'lCursor'     ,{ fg=color.dark, bg=color.white }),
 		hl(0, 'LineNr', { fg = color.grey }),
 		hl(0, 'NonText', { fg = color.light_grey }),
-		hl(0, 'Search'      ,{ fg=color.white, bg=color.dark }),
+		hl(0, 'Search'      ,{ fg=color.yellow, bg=color.dark_grey }),
 		hl(0, 'SignColumn', { fg = color.white }),
-		hl(0, 'Substitute'  ,{ fg=color.red, bg=color.dark }),
+		hl(0, 'Substitute'  ,{ fg=color.red, bg=color.dark_grey }),
 --________________________ Windows, Tabs and Buffers __________________________
 		hl(0, 'FloatTitle', { fg=color.green }),
 		hl(0, 'FloatBorder', { fg=color.purple }),

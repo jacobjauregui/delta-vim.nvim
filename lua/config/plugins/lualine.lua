@@ -140,8 +140,8 @@ function M.setup()
 				right = ''
 			},
 			section_separators = {
-				left = sep(1, 'space'), -- arrow, default, round, flag, slash, space, diagonal, trap, fire
-				right = sep(2, 'space')
+				left = '', -- arrow, default, round, flag, slash, space, diagonal, trap, fire
+				right = '',
 			},
 			disabled_filetypes = {
 				statusline = {
@@ -157,15 +157,15 @@ function M.setup()
 			always_divide_middle = true,
 			globalstatus = true,
 			refresh = {
-				statusline = 500,
-				tabline = 500,
-				winbar = 500,
+				statusline = 1200,
+				tabline = 1200,
+				winbar = 1200,
 			},
 		},
 		sections = {
 			lualine_a = {
 				{'mode',
-                    icon = icon(),
+                    icon = '󰕣',
                     draw_empty = false,
                 },
 			},
@@ -205,22 +205,23 @@ function M.setup()
 				{
 					"%< %l/%L |  %c%V",
 					padding = { left = 1, right = 1 },
-                    color = { bg = c.cyan, fg = c.darker_black, gui = 'bold' },
+                    color = { bg = '#2093c4', fg = c.darker_black, gui = 'bold' },
 				},
 			},
 		},
 		inactive_sections = {
 			lualine_a = {
 				{'mode',
-					icon = icon(),
+					icon = '󰕣',
 				},
 			},
 			lualine_b = {
 				{'branch',
-					icon = '󰊤 ',
+					icon = '',
 				},
 				{'diff',
 					colored = true,
+					icon = '󰊤',
 					diff_color = {
 						added = { fg = '#006414', gui = 'bold' },
 						modified = { fg = '#DF7800', gui = 'bold' },
@@ -247,8 +248,9 @@ function M.setup()
 			lualine_y = { { encoding } },
 			lualine_z = {
 				{
-					" %l/%L |  %c%V",
-					padding = { left = 2, right = 2 },
+					"%< %l/%L |  %c%V",
+					padding = { left = 1, right = 1 },
+					color = { bg = '#295c7e', fg = c.darker_black, gui = 'bold' },
 				},
 			},
 		},
@@ -261,34 +263,6 @@ function M.setup()
 			},
 			lualine_b = {},
 			lualine_c = {
-				--%b value of character under cursor
-				--%B as above, in hex
-				--%c column number
-				--%f relative path
-				--%F full path
-				--%k keymap name
-				--%l line number
-				--%L number of lines
-				--%m filestatus [+] [-]
-				--%n buffer number
-				--%p percentage in file
-				--%q quickfix list Location list
-				--%r file is readonly [RO]
-				--%S showcmd
-				--%T start of tab
-                --%t tile of file
-				--%V virtual column number
-				--%X end of tab, use %999X for a "close" button
-				--%y filetype
-				--%# highlight group, %#HighLightGroup#
-				--%* highlight group 1-9
-				--%! evaluate expr
-				--%< truncate string to max lenght
-                --%- align string to left
-                --%= align string to center
-				--% is a separation between lhs and rhs
-				--% {local fn = function() return %t end} return "%t"
-				--% {local fn = function() return %t end %} return "Name of current file"
 				{
 					'buffers',
 					show_filename_only = true,
@@ -302,7 +276,7 @@ function M.setup()
 						packer = 'LazyNvim',
 						fzf = 'FZF',
 						alpha = 'Alpha',
-                        NvimTree = 'NvimTree',
+						NvimTree = 'NvimTree',
 					},
 					use_mode_colors = true,
 					buffers_color = {
@@ -343,7 +317,7 @@ function M.setup()
 				{
 					"os.date('%H:%M | %d/%m/%Y')",
 					separator = { left = sep(2, 'round'), right = sep(1, 'round') },
-					color = { fg = '#20a3b4', bg = '#1e1e1e', gui = 'bold' }
+					color = { fg = '#2093c4', bg = '#1a1b1c', gui = 'bold' }
 				},
 			},
 		},
