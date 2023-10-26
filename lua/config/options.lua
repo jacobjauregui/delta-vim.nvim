@@ -84,7 +84,7 @@ opt.fillchars = { -- Character to use for display special items.
 	lastline = '‾',
 	eob = ' ', -- End of buffer
 }
-opt.timeoutlen = 100
+opt.timeoutlen = 200
 opt.updatetime = 150
 opt.shortmess = "filnxtToOF"
 opt.showmatch = true
