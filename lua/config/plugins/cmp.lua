@@ -15,7 +15,7 @@ function M.setup()
 		mapping = {
 			['<C-u>'] = cmp.mapping.scroll_docs(-4),
 			['<C-o>'] = cmp.mapping.scroll_docs(4),
-			['<C-h>'] = cmp.mapping.abort(),
+			['<C-a>'] = cmp.mapping.abort(),
 			['<C-n>'] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()

@@ -5,11 +5,30 @@ return {
 		"folke/neodev.nvim",
 	},
 	config = function()
-		vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-		vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-		vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-		vim.keymap.set('n', '<space>l', vim.diagnostic.setloclist)
-
+		local signs = {
+			Error = '',
+			Warn = '',
+			Hint = '',
+			Info = '',
+		}
+		for type, icon in pairs(signs) do
+			local hl = 'DiagnosticSign' .. type
+			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+		end
+		vim.diagnostic.config({
+			-- source = 'always', "if_many"
+			virtual_text = {
+				prefix = '●', -- , , , ●
+			},
+			severity_sort = true, -- Sets the order in which signs & virtual text are displayed.
+			float = {
+				source = 'always',
+			},
+		})
+		vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
+		vim.keymap.set('n', '<leader>dp', vim.diagnostic.goto_prev)
+		vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next)
+		vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist)
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities.textDocument.completion.completionItem = {
 			documentationFormat = { 'markdown', 'plaintext' },
@@ -34,25 +53,24 @@ return {
 			client.server_capabilities.documentRangeFormattingProvider = true
 			vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 			local opts = { buffer = bufnr }
-			vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+			vim.keymap.set('n', 'D', vim.lsp.buf.declaration, opts)
 			vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-			vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-			vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-			vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-			vim.keymap.set('n', '<space>wl', function()
+			vim.keymap.set('n', 'T', vim.lsp.buf.type_definition, opts)
+			vim.keymap.set('n', 'R', vim.lsp.buf.rename, opts)
+			vim.keymap.set({ 'n', 'v' }, '<leader>co', vim.lsp.buf.code_action, opts)
+			vim.keymap.set('n', '<leader>de', vim.lsp.buf.definition, opts)
+			vim.keymap.set('n', '<leader>im', vim.lsp.buf.implementation, opts)
+			vim.keymap.set('n', '<leader>re', vim.lsp.buf.references, opts)
+			vim.keymap.set('n', '<leader>si', vim.lsp.buf.signature_help, opts)
+			vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+			vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+			vim.keymap.set('n', '<leader>wl', function()
 				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 			end, opts)
-			vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-			vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-			vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-			vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-			vim.keymap.set('n', '<space>f', function()
+			vim.keymap.set('n', '<leader>fm', function()
 				vim.lsp.buf.format { async = true }
 				end,opts)
 		end
-
 		require("neodev").setup()
 		require("lspconfig").lua_ls.setup({
 			on_attach = on_attach,
